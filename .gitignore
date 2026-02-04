@@ -1,0 +1,13 @@
+node_modules
+out
+dist
+.vscode
+.cursor
+.cursorignore
+.cursorindexingignore
+.cursorrules
+.cursorrc
+.cursor.json
+.cursor.local.json
+.cursor.local.json
+*.vsix
