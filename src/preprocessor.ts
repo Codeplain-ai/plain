@@ -95,6 +95,9 @@ export class ConceptExtractor {
             const content = fs.readFileSync(filePath, 'utf8');
             const definedConcepts = this.extractConceptsFromDefinitions(filePath, content);
             const usedConcepts = this.extractConceptsFromSpecText(filePath, content);
+
+            this.outputChannel.appendLine(`definedConcepts: ${definedConcepts}`);
+            this.outputChannel.appendLine(`usedConcepts: ${usedConcepts}`);
                                     
             return {
                 filePath,
@@ -133,14 +136,11 @@ export class ConceptExtractor {
             
             const hasIndentation = /^\s+/.test(line);
 
-            this.outputChannel.appendLine(`line: ${line}`);
-            this.outputChannel.appendLine(`specText: ${prevSpecText}`);            
-            this.outputChannel.appendLine(`hasIndentation: ${hasIndentation}`);
-
             if (hasIndentation) {
                 prevSpecText += line + "\n"
                 continue
             } else {
+                prevSpecText = line;
                 currentLineIndex = lineIndex;
             }
 

@@ -1,6 +1,6 @@
 set -euo pipefail
 
-version="0.1.0"
+version="0.1.3"
 
 if [ -d out ]; then
   rm -rf out
@@ -10,7 +10,6 @@ if [ -f plainsyntax-$version.vsix ]; then
   rm plainsyntax-$version.vsix
 fi
 
-npm install -D typescript
 npx tsc
 npx vsce package --allow-missing-repository 
 
